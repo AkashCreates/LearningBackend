@@ -78,3 +78,4 @@
 // let fruits = ["apple", "banana", "mango", "grape"];
 // console.log(fruits.indexOf("Banana"));
 
+console.log("hello akash");
