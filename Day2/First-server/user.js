@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 
 const server = http.createServer((req, res) => {
-  console.log(req.url, req.method, req.headers);
+  console.log(req.url, req.method,);
 
   res.setHeader("Content-Type", "text/html");
 
@@ -24,8 +24,14 @@ const server = http.createServer((req, res) => {
     res.write("</body>");
     res.write("</html>");
     return res.end();
-  } else if (req.url.toLowerCase() === "/submit-details" && req.method === "POST") {
+  } else if (
+    req.url.toLowerCase() === "/submit-details" &&
+    req.method === "POST"
+  ) {
     fs.writeFileSync("user.txt", "User details submitted successfully!");
+    
+    // res.writeHead(302, { Location: "/" });
+
     res.statusCode = 302; // Redirect status code
     res.setHeader("Location", "/");
     return res.end();
