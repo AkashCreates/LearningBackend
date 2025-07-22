@@ -1,7 +1,6 @@
-const http = require("http");
 const fs = require("fs");
 
-const server = http.createServer((req, res) => {
+const userRequestaHandler = (req, res) => {
   console.log(req.url, req.method);
 
   res.setHeader("Content-Type", "text/html");
@@ -28,7 +27,6 @@ const server = http.createServer((req, res) => {
     req.url.toLowerCase() === "/submit-details" &&
     req.method === "POST"
   ) {
-
     const body = [];
     req.on("data", (chunk) => {
       console.log(chunk);
@@ -46,8 +44,7 @@ const server = http.createServer((req, res) => {
       const bodyObject = Object.fromEntries(params);
       console.log(bodyObject);
 
-       fs.writeFileSync("user.txt", JSON.stringify(bodyObject));
-
+      fs.writeFileSync("user.txt", JSON.stringify(bodyObject));
     });
 
     res.statusCode = 302; // Redirect status code
@@ -65,19 +62,9 @@ const server = http.createServer((req, res) => {
   res.write("</body>");
   res.write("</html>");
   res.end();
-});
+};
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
-
-
-
-
-
-
-
+module.exports = userRequestaHandler;
 // const http = require("http");
 // const fs = require("fs");
 
@@ -121,7 +108,7 @@ server.listen(PORT, () => {
 //       res.end("Form submitted successfully!");
 //      });
 //     return;
-//   }  
+//   }
 
 //   // Default 404 Route
 //   res.statusCode = 404;
