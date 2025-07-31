@@ -4,14 +4,14 @@
 //   console.log(req.url);
 // }).listen(3000);
 
-const http = require("http");
+// const http = require("http");
 
-http
-  .createServer((req, res) => {
-    console.log(req.url, req.method);
-    res.end("Hello Akash");
-  })
-  .listen(3000);
+// http
+//   .createServer((req, res) => {
+//     console.log(req.url, req.method);
+//     res.end("Hello Akash");
+//   })
+//   .listen(3000);
 
 // const http = require("http");
 
