@@ -1,8 +1,10 @@
 const fs = require("fs");
 
-// Read file (non-blocking)
-fs.readFile("file.txt", "utf-8", (err, data) => {
-  console.log("File content:", data);
+fs.readFile("Demo/file.txt", "utf-8", function (err, data) {
+  if (err) {
+    console.log("Some error found", err);
+    return;
+  } else {
+    console.log(data);
+  }
 });
-
-console.log("I am printed IMMEDIATELY!");
